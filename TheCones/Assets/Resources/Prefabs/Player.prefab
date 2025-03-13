@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 365839833603964717}
   - component: {fileID: 8341132523111235799}
   - component: {fileID: 3476985645912978103}
+  - component: {fileID: 6363568548324468207}
+  - component: {fileID: 1612439349100846055}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -180,13 +182,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e886cf9183aac4f9e91f6b9afa280bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 5
-  mouseSensitivity: 1
-  cameraTransform: {fileID: 899110950579454039}
-  maxLookAngle: 80
-  isGrounded: 0
-  moveInput: {x: 0, y: 0}
-  lookInput: {x: 0, y: 0}
+  playerManager: {fileID: 0}
   rb: {fileID: 0}
-  cameraPitch: 0
+  cameraTransform: {fileID: 899110950579454039}
+--- !u!114 &6363568548324468207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256826653100058724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa9f79807d80459eb8e46d0511962cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerState:
+    _toggleables:
+      isGrounded: 0
+  _playerInput:
+    movement:
+      maxLookAngle: 80
+      moveInput: {x: 0, y: 0}
+      lookInput: {x: 0, y: 0}
+    looking:
+      mouseSensitivity: 1
+      maxLookAngle: 80
+      cameraPitch: 0
+  _playerMovement:
+    moveSpeed: 5
+    jumpForce: 5
+  _playerReferences:
+    rb: {fileID: 8341132523111235799}
+    cameraTransform: {fileID: 3172292876478587658}
+--- !u!114 &1612439349100846055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256826653100058724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39a59a0ae7ab54097a191b3dcc09a73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
