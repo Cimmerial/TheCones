@@ -55,4 +55,12 @@ namespace Cimmerial
         //-+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- CLASS FUNCTIONS -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+-
 
     }
+
+    public enum ConeType
+    {
+        NONE,
+        ANT,
+        BEE,
+    }
+
 }

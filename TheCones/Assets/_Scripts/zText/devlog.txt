@@ -3,6 +3,15 @@
 -Morning. Note to look into ProBuilder. Not going to be able to work on this very much rn, school and bw take priority but though 
  id start this as bosses have me burnt out already.
 
+3/15/25 SAT 
+-Going to use cones as enemies and lasers as towers, or they will shoot lasers at first as that requires no projectile management.
+
+3/24/25
+-Fixed movement.
+
+
+
+
 (MECHANIC - PLAYER MOVING IN 3D SPACE)
 
 (MECHANIC - CONES FOLLOWING THE MAP PATH)

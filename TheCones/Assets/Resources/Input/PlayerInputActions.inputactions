@@ -92,7 +92,7 @@
                 {
                     "name": "",
                     "id": "8f9d076b-ab2b-47a3-bc40-ba766cd02c91",
-                    "path": "<Mouse>/delta",
+                    "path": "<VirtualMouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

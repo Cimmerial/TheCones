@@ -32,6 +32,8 @@ namespace Cimmerial
         public class PlayerInput
         {
 
+            [SerializeField] public Vector3 playerMoveInput;
+
             public Movement movement;
             [Serializable]
             public class Movement
@@ -77,7 +79,6 @@ namespace Cimmerial
             _playerReferences.rb = GetComponent<Rigidbody>();
         }
 
-
         //-+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- CLASS FUNCTIONS -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+-
 
         public PlayerState State { get => _playerState; set => _playerState = value; }
@@ -93,6 +94,12 @@ namespace Cimmerial
         public PlayerInput Input { get => _playerInput; set => _playerInput = value; }
 
         // Movement Properties
+
+        public Vector3 PlayerMoveInput
+        {
+            get => _playerInput.playerMoveInput;
+            set => _playerInput.playerMoveInput = value;
+        }
 
         public Transform CameraTransform
         {

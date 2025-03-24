@@ -16,10 +16,13 @@ namespace Cimmerial
             }
             instance = this;
             playerInputEvents = new PlayerInputEvents();
+            Debug.Log("test");
         }
     }
 }
+
 // example events:
 // public event Action<BloodSpatterType, Vector2, Vector2> OnInstantiateBloodSpatter;
 //         //===================================================================================================================
 //         public void InstantiateBloodSpatter(BloodSpatterType bloodSpatterType, Vector2 position, Vector2 direction) { OnInstantiateBloodSpatter?.Invoke(bloodSpatterType, position, direction); }
+

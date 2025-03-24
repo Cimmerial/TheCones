@@ -34,6 +34,7 @@ namespace Cimmerial
         private void OnEnable()
         {
             EventsManager.instance.playerInputEvents.OnMovePerformed += Move_performed;
+            EventsManager.instance.playerInputEvents.OnMoveCanceled += Move_canceled;
             EventsManager.instance.playerInputEvents.OnLook += Look;
             EventsManager.instance.playerInputEvents.OnJumpStarted += Jump;
         }
@@ -41,6 +42,7 @@ namespace Cimmerial
         private void OnDisable()
         {
             EventsManager.instance.playerInputEvents.OnMovePerformed -= Move_performed;
+            EventsManager.instance.playerInputEvents.OnMoveCanceled -= Move_canceled;
             EventsManager.instance.playerInputEvents.OnLook -= Look;
             EventsManager.instance.playerInputEvents.OnJumpStarted -= Jump;
         }
@@ -48,11 +50,13 @@ namespace Cimmerial
         private void FixedUpdate()
         {
             CheckGrounded();
+            UpdatePlayerVelocity();
         }
 
         //-+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- CLASS FUNCTIONS -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+- -+-
 
         private void Move_performed(InputAction.CallbackContext context) => HandleMovement(context.ReadValue<Vector2>());
+        private void Move_canceled(InputAction.CallbackContext context) => playerManager.PlayerMoveInput = Vector3.zero;
         private void Look(InputAction.CallbackContext context) => HandleLook(context.ReadValue<Vector2>());
 
         private void HandleMovement(Vector2 movementDirection)
@@ -62,8 +66,7 @@ namespace Cimmerial
             Vector3 right = transform.right * movementDirection.x;
             Vector3 moveDirection = (forward + right).normalized;
 
-            // Apply movement
-            rb.MovePosition(rb.position + playerManager.MoveSpeed * Time.fixedDeltaTime * moveDirection);
+            playerManager.PlayerMoveInput = moveDirection;
         }
 
         private void HandleLook(Vector2 lookDirection)
@@ -77,6 +80,10 @@ namespace Cimmerial
             cameraTransform.localRotation = Quaternion.Euler(playerManager.CameraPitch, 0f, 0f);
         }
 
+        //===================================================================================================================
+
+        private void UpdatePlayerVelocity() => rb.MovePosition(rb.position + playerManager.MoveSpeed * Time.fixedDeltaTime * playerManager.PlayerMoveInput);
+
         private void Jump()
         {
             if (playerManager.IsGrounded)
@@ -87,7 +94,7 @@ namespace Cimmerial
 
         private void CheckGrounded()
         {
-            float rayLength = 1.1f; 
+            float rayLength = 1.1f;
             playerManager.IsGrounded = Physics.Raycast(transform.position, Vector3.down, rayLength);
         }
     }
